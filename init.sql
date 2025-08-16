@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON gamify_gym.* TO 'myuser'@'%';
+FLUSH PRIVILEGES;

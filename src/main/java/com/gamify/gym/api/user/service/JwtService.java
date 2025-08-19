@@ -23,12 +23,13 @@ public class JwtService {
         long expiry = 604800L;
 
         String userType = ((UserAuthenticated) authentication.getPrincipal()).getUserType();
+        String email = ((UserAuthenticated) authentication.getPrincipal()).getEmail();
 
         var claims = JwtClaimsSet.builder()
                 .issuer("Gamify Gym")
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(expiry))
-                .subject(authentication.getName())
+                .subject(email)
                 .claim("userType", userType)
                 .build();
         return encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
